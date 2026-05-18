@@ -1,0 +1,13 @@
+# Compilati Java
+*.class
+
+# Cartelle IDE e build
+.idea/
+.vscode/
+.venv/
+bin/
+out/
+
+# Log e dati
+*.txt
+*.dat
