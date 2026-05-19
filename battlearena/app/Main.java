@@ -1,6 +1,7 @@
 package battlearena.app;
 
 import battlearena.model.GestoreSalvataggio;
+import battlearena.model.ImpPersonaggio;
 import battlearena.model.Mossa;
 import battlearena.model.Personaggio;
 import battlearena.controller.ArenaController;
@@ -11,134 +12,10 @@ public class Main {
     public static void main(String[] args) {
         try {
             // TODO: Studente 1
-            Personaggio p1 = new Personaggio() {
-                @Override
-                public String getNome() {
-                    return "Hammon";
-                }
-
-                @Override
-                public int getHp() {
-                    return 100;
-                }
-
-                @Override
-                public int getHpMax() {
-                    return 100;
-                }
-
-                @Override
-                public void subisciDanno(int danno) {
-                    // Implementazione temporanea
-                }
-
-                @Override
-                public boolean isVivo() {
-                    return true;
-                }
-
-                @Override
-                public TipoPersonaggio getTipo() {
-                    return TipoPersonaggio.FUOCO;
-                }
-
-                @Override
-                public Mossa[] getMosseDisponibili() {
-                    return new Mossa[] {
-                            new Mossa() {
-                                @Override
-                                public String getNome() {
-                                    return "Colpo Base";
-                                }
-
-                                @Override
-                                public int getPotenza() {
-                                    return 10;
-                                }
-
-                                @Override
-                                public String esegui(Personaggio attaccante, Personaggio difensore) {
-                                    return attaccante.getNome() + " usa " + getNome() + " su " + difensore.getNome();
-                                }
-
-                                @Override
-                                public String toString() {
-                                    return getNome();
-                                }
-                            }
-                    };
-                }
-
-                @Override
-                public String getPercorsoImmagine() {
-                    return "assets/fighter_red.png";
-                }
-            };
+            Personaggio p1 = new ImpPersonaggio("Hammon", Personaggio.TipoPersonaggio.FUOCO, "assets/fighter_red.png");
 
             // TODO: Studente 2
-            Personaggio p2 = new Personaggio() {
-                @Override
-                public String getNome() {
-                    return "Glasond";
-                }
-
-                @Override
-                public int getHp() {
-                    return 100;
-                }
-
-                @Override
-                public int getHpMax() {
-                    return 100;
-                }
-
-                @Override
-                public void subisciDanno(int danno) {
-                    // Implementazione temporanea
-                }
-
-                @Override
-                public boolean isVivo() {
-                    return true;
-                }
-
-                @Override
-                public TipoPersonaggio getTipo() {
-                    return TipoPersonaggio.FUOCO;
-                }
-
-                @Override
-                public Mossa[] getMosseDisponibili() {
-                    return new Mossa[] {
-                            new Mossa() {
-                                @Override
-                                public String getNome() {
-                                    return "Colpo Base";
-                                }
-
-                                @Override
-                                public int getPotenza() {
-                                    return 10;
-                                }
-
-                                @Override
-                                public String esegui(Personaggio attaccante, Personaggio difensore) {
-                                    return attaccante.getNome() + " usa " + getNome() + " su " + difensore.getNome();
-                                }
-
-                                @Override
-                                public String toString() {
-                                    return getNome();
-                                }
-                            }
-                    };
-                }
-
-                @Override
-                public String getPercorsoImmagine() {
-                    return "assets/fighter_blue.png";
-                }
-            };
+            Personaggio p2 = new ImpPersonaggio("Glasond", Personaggio.TipoPersonaggio.ACQUA, "assets/fighter_blue.png");
 
             // TODO: Studente 3
             GestoreSalvataggio salvataggio = new GestoreSalvataggio() {
