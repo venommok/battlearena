@@ -1,6 +1,8 @@
 package battlearena.model;
 
 public class ImpPersonaggio implements Personaggio {
+    FactoryMosse m = new FactoryMosse();
+
     private static final int MAX_HP = 100;
     private static final int MIN_HP = 0;
 
@@ -52,34 +54,12 @@ public class ImpPersonaggio implements Personaggio {
 
     @Override
     public Mossa[] getMosseDisponibili() {
-        return new Mossa[] {
-                new Mossa() {
-                    @Override
-                    public String getNome() {
-                        return "Colpo Base";
-                    }
-
-                    @Override
-                    public int getPotenza() {
-                        return 10;
-                    }
-
-                    @Override
-                    public String esegui(Personaggio attaccante, Personaggio difensore) {
-                        difensore.subisciDanno(25);
-                        return attaccante.getNome() + " usa " + getNome() + " su " + difensore.getNome();
-                    }
-
-                    @Override
-                    public String toString() {
-                        return getNome();
-                    }
+                    return m.getMosse().toArray(new Mossa[0]);
                 }
-        };
-    }
 
     @Override
     public String getPercorsoImmagine() {
         return this.path;
     }
-}
+};
+
