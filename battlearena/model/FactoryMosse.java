@@ -7,6 +7,10 @@ public class FactoryMosse{
 
     public FactoryMosse(){
         mosse.add(new Mossa(){
+            public int getCosto(){
+                return 10;
+            }
+
             @Override
             public String getNome() {
                 return "Default";
@@ -20,6 +24,7 @@ public class FactoryMosse{
             @Override
             public String esegui(Personaggio attaccante, Personaggio difensore) {
                 difensore.subisciDanno(getPotenza());
+                attaccante.setEnergia(attaccante.getEnergia() - getPotenza());
                 return attaccante.getNome() + " usa " + getNome() + " su " + difensore.getNome();
             }
 
@@ -43,6 +48,7 @@ public class FactoryMosse{
             @Override
             public String esegui(Personaggio attaccante, Personaggio difensore) {
                 difensore.subisciDanno(getPotenza());
+                attaccante.setEnergia(attaccante.getEnergia() - getPotenza());
                 return attaccante.getNome() + " usa " + getNome() + " su " + difensore.getNome();
             }
 
