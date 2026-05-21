@@ -19,7 +19,14 @@ public class FactoryMosse{
 
             @Override
             public String esegui(Personaggio attaccante, Personaggio difensore) {
-                difensore.subisciDanno(getPotenza());
+                if(difensore.getTipo() == Personaggio.TipoPersonaggio.FUOCO
+                    && attaccante.getTipo() == Personaggio.TipoPersonaggio.ACQUA
+                    || difensore.getTipo() == Personaggio.TipoPersonaggio.ERBA
+                    && attaccante.getTipo() == Personaggio.TipoPersonaggio.FUOCO){
+                    difensore.subisciDanno(getPotenza() * 2);
+                }else {
+                    difensore.subisciDanno(getPotenza());
+                }
                 return attaccante.getNome() + " usa " + getNome() + " su " + difensore.getNome();
             }
 
@@ -42,7 +49,14 @@ public class FactoryMosse{
 
             @Override
             public String esegui(Personaggio attaccante, Personaggio difensore) {
-                difensore.subisciDanno(getPotenza());
+                if(difensore.getTipo() == Personaggio.TipoPersonaggio.FUOCO
+                        && attaccante.getTipo() == Personaggio.TipoPersonaggio.ACQUA
+                        || difensore.getTipo() == Personaggio.TipoPersonaggio.ERBA
+                        && attaccante.getTipo() == Personaggio.TipoPersonaggio.FUOCO){
+                    difensore.subisciDanno(getPotenza() * 2);
+                }else {
+                    difensore.subisciDanno(getPotenza());
+                }
                 return attaccante.getNome() + " usa " + getNome() + " su " + difensore.getNome();
             }
 

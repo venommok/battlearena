@@ -49,7 +49,7 @@ public class ImpPersonaggio implements Personaggio {
 
     @Override
     public TipoPersonaggio getTipo() {
-        return this.getTipo();
+        return this.tipo;
     }
 
     @Override
