@@ -7,6 +7,10 @@ public class FactoryMosse{
 
     public FactoryMosse(){
         mosse.add(new Mossa(){
+            public int getCosto(){
+                return 10;
+            }
+
             @Override
             public String getNome() {
                 return "Default";

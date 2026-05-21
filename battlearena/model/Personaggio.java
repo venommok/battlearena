@@ -5,6 +5,11 @@ public interface Personaggio {
     enum TipoPersonaggio {
         FUOCO, ACQUA, ERBA
     }
+
+    public void setEnergia(int energia);
+
+    public int getEnergia();
+
     /** Nome visualizzato del personaggio. */
     String getNome();
 
