@@ -35,8 +35,10 @@ public class ImpPersonaggio implements Personaggio {
         }
     }
 
+    @Override
     public int getEnergiaMin(){return ENERGIA_MIN;}
 
+    @Override
     public int getEnergiaMax(){return ENERGIA_MAX;}
 
     @Override

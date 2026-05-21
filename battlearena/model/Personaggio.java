@@ -9,6 +9,8 @@ public interface Personaggio {
     public void setEnergia(int energia);
 
     public int getEnergia();
+    public int getEnergiaMax();
+    public int getEnergiaMin();
 
     /** Nome visualizzato del personaggio. */
     String getNome();

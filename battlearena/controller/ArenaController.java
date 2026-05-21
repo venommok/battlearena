@@ -72,6 +72,9 @@ public class ArenaController {
         view.aggiornaHpP1(Math.max(0, p1.getHp()), p1.getHpMax());
         view.aggiornaHpP2(Math.max(0, p2.getHp()), p2.getHpMax());
 
+        view.aggiornaEnergyP1(p1.getEnergia(), p1.getEnergiaMax());
+        view.aggiornaEnergyP2(p2.getEnergia(), p2.getEnergiaMax());
+
         if (partitaTerminata()) {
             gestisciFinePartita();
         }

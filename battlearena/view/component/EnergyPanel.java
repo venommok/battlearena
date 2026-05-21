@@ -25,6 +25,11 @@ public class EnergyPanel extends JPanel {
         barra.setBorder(BorderFactory.createTitledBorder(nome));
         barra.setFont(barFont);
         barra.setPreferredSize(new Dimension(520, 36));
+
+        barra.setMinimum(0);      // Valore minimo
+        barra.setMaximum(100);    // Valore massimo (pari a ENERGIA_MAX)
+        barra.setValue(100);
+
         barra.setForeground(Color.BLUE); // Colore blu distintivo per l'energia
         return barra;
     }

@@ -31,6 +31,7 @@ public class FactoryMosse{
                 }else {
                     difensore.subisciDanno(getPotenza());
                 }
+                attaccante.setEnergia(attaccante.getEnergia() - getCosto());
                 return attaccante.getNome() + " usa " + getNome() + " su " + difensore.getNome();
             }
 
@@ -41,6 +42,10 @@ public class FactoryMosse{
         });
 
         mosse.add(new Mossa(){
+            public int getCosto(){
+                return 25;
+            }
+
             @Override
             public String getNome() {
                 return "Speciale1";
@@ -61,6 +66,7 @@ public class FactoryMosse{
                 }else {
                     difensore.subisciDanno(getPotenza());
                 }
+                attaccante.setEnergia(attaccante.getEnergia() - getCosto());
                 return attaccante.getNome() + " usa " + getNome() + " su " + difensore.getNome();
             }
 
