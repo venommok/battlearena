@@ -4,6 +4,7 @@ import battlearena.model.Mossa;
 import battlearena.view.component.BackgroundLabel;
 import battlearena.view.component.CenterPanel;
 import battlearena.view.component.HpPanel;
+import battlearena.view.component.EnergyPanel; // Importato correttamente
 import battlearena.view.component.LogPanel;
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +20,8 @@ public class ArenaFrame extends JFrame implements ArenaView {
     private static final Font BUTTON_FONT = new Font("Dialog", Font.BOLD, 16);
     private final JProgressBar hpBarP1;
     private final JProgressBar hpBarP2;
+    private final JProgressBar energyBarP1;
+    private final JProgressBar energyBarP2;
     private final JTextArea logArea;
     private final JButton turnoButton;
 
@@ -28,17 +31,31 @@ public class ArenaFrame extends JFrame implements ArenaView {
         JLabel backgroundLabel = new BackgroundLabel("assets/arena_bg.png", FRAME_WIDTH, FRAME_HEIGHT);
         setContentPane(backgroundLabel);
 
-        HpPanel topPanel = new HpPanel(nomeP1, nomeP2, BAR_FONT);
-        hpBarP1 = topPanel.getHpBarP1();
-        hpBarP2 = topPanel.getHpBarP2();
+        // Creazione dei pannelli delle statistiche
+        HpPanel hpPanel = new HpPanel(nomeP1 + " (HP)", nomeP2 + " (HP)", BAR_FONT);
+        EnergyPanel energyPanel = new EnergyPanel(nomeP1, nomeP2, BAR_FONT);
 
-        CenterPanel centerPanel = new CenterPanel(nomeP1, percorsoImgP1,nomeP2, percorsoImgP2,TITLE_FONT, ICON_SIZE);
+        // CORREZIONE: Assegnazione corretta delle rispettive barre
+        hpBarP1 = hpPanel.getHpBarP1();
+        hpBarP2 = hpPanel.getHpBarP2();
+        energyBarP1 = energyPanel.getEnergyBarP1();
+        energyBarP2 = energyPanel.getEnergyBarP2();
+
+        // Contenitore per mettere HpPanel sopra EnergyPanel a Nord
+        JPanel pannelloNord = new JPanel();
+        pannelloNord.setOpaque(false);
+        pannelloNord.setLayout(new BoxLayout(pannelloNord, BoxLayout.Y_AXIS));
+        pannelloNord.add(hpPanel);
+        pannelloNord.add(energyPanel);
+
+        CenterPanel centerPanel = new CenterPanel(nomeP1, percorsoImgP1, nomeP2, percorsoImgP2, TITLE_FONT, ICON_SIZE);
 
         LogPanel bottomPanel = new LogPanel(LOG_FONT, BUTTON_FONT);
         logArea = bottomPanel.getLogArea();
         turnoButton = bottomPanel.getTurnoButton();
 
-        add(topPanel, BorderLayout.NORTH);
+        // Inserimento dei componenti principali nel BorderLayout del frame
+        add(pannelloNord, BorderLayout.NORTH);
         add(centerPanel, BorderLayout.CENTER);
         add(bottomPanel, BorderLayout.SOUTH);
 
@@ -67,6 +84,17 @@ public class ArenaFrame extends JFrame implements ArenaView {
     public void aggiornaHpP2(int hpAttuale, int hpMax) {
         hpBarP2.setMaximum(hpMax);
         hpBarP2.setValue(hpAttuale);
+    }
+
+    // CORREZIONE: Ora modificano le barre dell'energia, non quelle degli HP
+    public void aggiornaEnergyP1(int energiaAttuale, int energiaMax) {
+        energyBarP1.setMaximum(energiaMax);
+        energyBarP1.setValue(energiaAttuale);
+    }
+
+    public void aggiornaEnergyP2(int energiaAttuale, int energiaMax) {
+        energyBarP2.setMaximum(energiaMax);
+        energyBarP2.setValue(energiaAttuale);
     }
 
     @Override
