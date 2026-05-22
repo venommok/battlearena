@@ -75,6 +75,19 @@ public class FactoryMosse{
                 return getNome();
             }
         });
+
+        mosse.add(new Mossa() {
+            @Override
+            public String getNome() {return "Speciale2";}
+
+            @Override
+            public int getPotenza() {return 0;}
+
+            @Override
+            public String esegui(Personaggio attaccante, Personaggio difensore) {
+                return "";
+            }
+        });
     }
 
     public ArrayList<Mossa> getMosse(){
