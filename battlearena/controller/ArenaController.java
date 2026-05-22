@@ -1,6 +1,7 @@
 package battlearena.controller;
 
 import battlearena.model.GestoreSalvataggio;
+import battlearena.model.ImpGestoreSalvataggio;
 import battlearena.model.Personaggio;
 import battlearena.model.Mossa;
 import battlearena.view.ArenaView;
@@ -13,6 +14,8 @@ public class ArenaController {
     @SuppressWarnings("unused")
     private final GestoreSalvataggio salvataggio;
     private boolean turnoP1;
+
+    ImpGestoreSalvataggio save = new ImpGestoreSalvataggio();
 
     public ArenaController(ArenaView view, Personaggio p1, Personaggio p2, GestoreSalvataggio salvataggio) {
         this.view = view;
@@ -63,6 +66,11 @@ public class ArenaController {
             log = "Nessuna mossa selezionata per " + attaccante.getNome();
         } else {
             log = mossa.esegui(attaccante, difensore);
+            try {
+                save.registraAzioneLog(mossa.getNome());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
 
         view.aggiungiTestoLog(log);
@@ -82,7 +90,11 @@ public class ArenaController {
 
     private void gestisciFinePartita() {
         view.disabilitaBottoneTurno();
-        //TODO: gestisci qui il salvataggio fine partita
+        try{
+            save.salvaVincitore(getNomeVincitore());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         view.mostraSchermataFinePartita(getNomeVincitore());
     }
 

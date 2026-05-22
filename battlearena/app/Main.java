@@ -1,9 +1,6 @@
 package battlearena.app;
 
-import battlearena.model.GestoreSalvataggio;
-import battlearena.model.ImpPersonaggio;
-import battlearena.model.Mossa;
-import battlearena.model.Personaggio;
+import battlearena.model.*;
 import battlearena.controller.ArenaController;
 import battlearena.view.ArenaFrame;
 import battlearena.view.ArenaView;
@@ -18,17 +15,7 @@ public class Main {
             Personaggio p2 = new ImpPersonaggio("Tony", Personaggio.TipoPersonaggio.ACQUA, "assets/fighter_blue.png");
 
             // TODO: Studente 3
-            GestoreSalvataggio salvataggio = new GestoreSalvataggio() {
-                @Override
-                public void registraAzioneLog(String azione) {
-                    // Implementazione temporanea
-                }
-
-                @Override
-                public void salvaVincitore(String nomePersonaggio) {
-                    // Implementazione temporanea
-                }
-            };
+            ImpGestoreSalvataggio salvataggio = new ImpGestoreSalvataggio();
 
             // Dopo il merge dei branch, sostituire le istanze di esempio con le classi concrete.
             ArenaView vista = new ArenaFrame(p1.getNome(), p1.getPercorsoImmagine(),p2.getNome(), p2.getPercorsoImmagine());
