@@ -12,10 +12,10 @@ public class Main {
     public static void main(String[] args) {
         try {
             // TODO: Studente 1
-            Personaggio p1 = new ImpPersonaggio("Hammon", Personaggio.TipoPersonaggio.FUOCO, "/assets/fighter_red.png");
+            Personaggio p1 = new ImpPersonaggio("Hammon", Personaggio.TipoPersonaggio.FUOCO, "assets/fighter_red.png");
 
             // TODO: Studente 2
-            Personaggio p2 = new ImpPersonaggio("Tony", Personaggio.TipoPersonaggio.ACQUA, "/assets/fighter_blue.png");
+            Personaggio p2 = new ImpPersonaggio("Tony", Personaggio.TipoPersonaggio.ACQUA, "assets/fighter_blue.png");
 
             // TODO: Studente 3
             GestoreSalvataggio salvataggio = new GestoreSalvataggio() {
