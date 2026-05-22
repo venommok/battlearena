@@ -53,7 +53,7 @@ public class FactoryMosse{
 
             @Override
             public int getPotenza() {
-                return 25;
+                return 20;
             }
 
             @Override
